@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/static/css/style-post.css">
+
+<style>
+    /* Style the button */
+    button {
+        background-color: #4CAF50; /* Set background color */
+        color: white; /* Set text color */
+        padding: 10px 20px; /* Set padding */
+        font-size: 16px; /* Set font size */
+        border: none; /* Remove border */
+        cursor: pointer; /* Add cursor pointer */
+        border-radius: 5px; /* Add border radius */
+    }
+
+    /* Style the form labels */
+    label {
+        color: rgb(253, 253, 253); /* Set label text color */
+        font-size: 24px; /* Set label font size */
+    }
+
+    h1, p {
+        color: white;
+    }
+</style>
+
+<div style="margin-bottom: 140px;">
+<div class="post-wrapper"> 
+    <section class="post-list">
+        <div class="post-cont">
+
+<h1>Delete Post</h1>
+<p>Are you sure you want to delete the post "{{ post.title }}"?</p>
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">Delete</button>
+</form>
+
+</div>
+</section>
+</div>
+</div>
+<div class="copyright_section">
+    <p class="copyright_text">Copyright 2023 All Right Reserved By Snipe Tech Pvt Ltd</p>
+ </div>
+
+{% endblock %}

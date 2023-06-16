@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+.notification-cont {
+  border: 2px solid rgb(250, 247, 247); /* Add border */
+}
+
+.notification-font {
+  padding-left: 40%;
+  color: aliceblue;
+}
+
+.name-fonh {
+  font-size: 200%;
+  color: aliceblue;
+}
+.name-fon {
+  font-size: 140%;
+  color: aliceblue;
+}
+
+.section-message {
+  padding-top: 10%;
+  padding-right: 20%;
+  padding-left: 20%;
+  background-image: linear-gradient(#1e415e 10%, #2b5b84 90%);
+  padding-bottom: 5%;
+
+}
+
+</style>
+<section class="section-message">
+<h1 class="notification-font">Messages & Enquiries</h1>
+  {% for message in messages %}
+  <div class="notification-cont">
+    <div class="container">
+        <p class="name-fonh">Name : {{ message.name }}</p>
+        <p class="name-fon">Email: {{ message.email }}</p>
+        <p class="name-fon"> Message: {{ message.message }}</p>
+    </div>
+  </div>
+  {% empty %}
+    <p>No notifications.</p>
+  {% endfor %}
+</section>
+
+      <div class="copyright_section">
+         <p class="copyright_text">Copyright 2023 All Right Reserved By Snipe Tech Pvt Ltd</p>
+      </div>
+    
+
+{% endblock content %}

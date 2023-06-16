@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/static/css/style-post.css">
+
+<style>
+    .post-name a:hover {
+        color: #4CAF50;
+    }
+</style>
+
+<div style="margin-bottom: 100px;">
+<div class="post-wrapper">
+    <section class="post-list">
+        <div class="post-cont">
+            <h2 class="heading-post">Posts</h2>
+            {% if user.is_authenticated and user.is_staff %}
+            <a href="{% url 'create_post' %}" class="btn btn-success btn-sm">Create Post</a>
+            {% endif %}
+            <ul>
+                {% for post in posts %}
+                    <li>
+                        <div class="post-name">
+                            <a href="{% url 'view_post_detail' post.id %}" style="font-size: 20px;">{{ post.title }}</a>
+                        </div>
+                        {% if user.is_authenticated and user.is_staff %}
+                            <div class="post-actions">
+                                <a href="{% url 'update_post' post.id %}" class="btn btn-primary">Edit</a>
+                                <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+</div>
+</div>
+
+<div class="copyright_section">
+    <p class="copyright_text">Copyright 2023 All Right Reserved By Snipe Tech Pvt Ltd</p>
+</div>
+
+
+{% endblock content %}
